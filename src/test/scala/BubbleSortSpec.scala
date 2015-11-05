@@ -18,6 +18,11 @@ class BubbleSortSpec extends FunSpec {
       val emptyList = BubbleSort.sort(List(1,2,3))
       emptyList shouldBe List(1,2,3)
     }
+
+    it("should return an ordered list when the list is not ordered") {
+      val emptyList = BubbleSort.sort(List(5,1,4,2,8))
+      emptyList shouldBe List(1,2,4,5,8)
+    }
   }
 }
 
