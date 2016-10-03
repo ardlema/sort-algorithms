@@ -38,7 +38,8 @@ object ApplicationBuild extends Build {
   )
 
   val customLibraryDependencies = Seq(
-    "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+    "org.scalatest" %% "scalatest" % "2.2.4" % "test",
+    "org.scalacheck" %% "scalacheck" % "1.13.2" % "test"
   ).map(_.exclude(
     "org.slf4j", "slf4j-log4j12"
   ))
