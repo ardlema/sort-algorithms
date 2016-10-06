@@ -1,3 +1,6 @@
+import scala.annotation.tailrec
+import scala.collection.mutable.ListBuffer
+
 // Copyright (C) 2011-2012 the original author or authors.
 // See the LICENCE.txt file distributed with this work for additional
 // information regarding copyright ownership.
@@ -23,6 +26,23 @@ object SelectionSort {
         min :: sort(removeFirst(l)(_ == min))
       }
     }
+  }
+
+  def tailRecursiveSort(l: List[Int]): List[Int] = {
+
+    @tailrec
+    def sort(l: List[Int], acc: ListBuffer[Int]): ListBuffer[Int] = {
+      l match {
+        case Nil => acc
+        case l => {
+          val min = l.min
+          val listWithoutMin = removeFirst(l)(_ == min)
+          sort(listWithoutMin, acc += min)
+        }
+      }
+    }
+
+    sort(l, new ListBuffer[Int]).toList
   }
 
   def removeFirst[T](list: List[T])(pred: (T) => Boolean): List[T] = {
